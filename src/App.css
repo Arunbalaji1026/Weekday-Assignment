@@ -1,3 +1,9 @@
+h3,
+h2,
+p {
+  margin: unset;
+}
+
 .card-container {
   display: grid;
   gap: 20px;
@@ -7,10 +13,10 @@
 }
 
 .card {
-  width: 500px;
-  height: 680px;
   padding: 15px;
-  border-radius: 5px;
+  height: 580px;
+  max-width: 360px;
+  border-radius: 15px;
   border: 1px solid darkgray;
 }
 
@@ -19,22 +25,49 @@
 }
 
 .titles {
+  gap: 10px;
   margin: 10px;
   display: flex;
+  align-items: flex-start;
 }
 
-.titles > h3, h2 {
+.job-info {
+  gap: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.location-info {
+  font-size: 11px;
+  font-weight: 400;
+  font-family: sans-serif;
+}
+
+.salary {
+  gap: 5px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.titles>h3,
+h2 {
   font-size: 14px;
   font-weight: 600;
 }
 
-.blur-text {
-  position: relative;
+.company-logo {
+  width: 35px;
+  height: 45px;
+}
+
+.Jd-blur-text {
+  height: 14.8em;
   line-height: 1.6;
   /* Adjust line height to ensure lines are readable */
-  height: 14.8em;
-  /* Adjust height based on line-height and number of lines visible */
   overflow: hidden;
+  position: relative;
+  /* Adjust height based on line-height and number of lines visible */
   mask-image: linear-gradient(to bottom, black 60%, transparent);
 }
 
@@ -62,11 +95,23 @@
 .exp {
   display: flex;
   flex-direction: column;
+
+  >h3,
+  h2 {
+    font-weight: 400;
+    margin-bottom: 10px;
+  }
 }
 
 .easyapply-btn {
+  gap: 10px;
+  display: flex;
   color: black;
-  background-color: green;
+  font-weight: 700;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background-color: #55efc4;
 }
 
 .referral-btn {
