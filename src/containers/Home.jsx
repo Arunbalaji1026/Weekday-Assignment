@@ -1,10 +1,18 @@
 import React from "react";
+import { Grid } from '@mui/material'
+import Card from "../components/Card";
 
 const Home = () => {
-    return(
-        <div>
-            Home page
-        </div>
+    return (
+        <Grid container spacing={2}>
+            <Grid item lg={12} className="card-container">
+                <Card />
+                <Card />
+                <Card />
+                <Card />
+            </Grid>
+
+        </Grid>
     )
 }
 
