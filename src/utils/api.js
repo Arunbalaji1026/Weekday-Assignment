@@ -1,12 +1,12 @@
 import { apiHeaders } from "./apiHeaders";
 
-export const getApiData = async () => {
+export const getApiData = async (offset) => {
     const requestOptions = {
         method: 'POST',
         headers: apiHeaders,
         body: JSON.stringify({
             limit: 10,
-            offset: 0
+            offset
         })
     };
     try {

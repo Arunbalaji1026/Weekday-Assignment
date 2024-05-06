@@ -2,28 +2,48 @@ import React, { useState, useEffect } from "react";
 import { Grid } from '@mui/material'
 import Card from "../components/Card";
 import { getApiData } from "../utils/api";
+import InfiniteScroll from "../components/InfiniteScroll";
 
 
 const Home = () => {
     const [jobListings, setJobListings] = useState([]);
+    const [offset, setOffset] = useState(0);
+    const [loading, setLoading] = useState(false);
+    const [hasMore, setHasMore] = useState(true);
+
+    const loadData = async () => {
+        if (loading) return;
+        setLoading(true);
+        const result = await getApiData(offset);
+        if (result) {
+            setJobListings(prevData => offset !== 0 ? [...prevData, ...result.jdList] : result.jdList);
+            setOffset(prevOffset => prevOffset + result.jdList.length);
+            setHasMore(result.jdList.length > 0);
+        } else {
+            setHasMore(false);
+        }
+        setLoading(false);
+    };
 
     useEffect(() => {
-        const fetchData = async () => {
-            const response = await getApiData();
-            setJobListings(response);
-        }
-
-        fetchData()
-    }, []);
+        loadData()
+    }, [])
 
     return (
-        <Grid container spacing={3}>
-            {jobListings?.jdList?.length > 0 && jobListings?.jdList?.map((jobDetails, index) =>
-                <Grid item lg={4} md={6} xs={12}>
-                    <Card key={index} jobData={jobDetails} />
-                </Grid>
-            )}
-        </Grid>
+        <>
+            <Grid container spacing={3}>
+                {jobListings && jobListings?.length > 0 && jobListings?.map((jobDetails, index) =>
+                    <Grid item lg={4} md={6} xs={12}>
+                        <Card key={index} jobData={jobDetails} />
+                    </Grid>
+                )}
+            </Grid>
+            <InfiniteScroll
+                loadMore={loadData}
+                hasMore={hasMore}
+                loading={loading}
+            />
+        </>
     )
 }
 

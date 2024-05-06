@@ -1,6 +1,4 @@
 import React from "react";
-// import pic1 from "../assets/images/pic1.jpg";
-// import pic2 from "../assets/images/pic2.jpg";
 import { green, orange, yellow } from '@mui/material/colors';
 import { capitalizeFirstLetter } from "../utils/utilCommonFunc";
 import CheckBoxIcon from '@mui/icons-material/CheckBox';
