@@ -32,7 +32,7 @@ const Home = () => {
 
     return (
         <>
-            <Box sx={{marginBottom: 10}}>
+            <Box sx={{marginBottom: '30px'}}>
                 <Filter />
             </Box>
             <Grid container spacing={3} justifyContent="flex-start">

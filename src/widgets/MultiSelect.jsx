@@ -2,8 +2,9 @@ import { TextField, Autocomplete, Paper } from "@mui/material";
 import React, { useState } from "react";
 
 const MultiSelect = ({ dropdownOptions, label }) => {
-    const [value, setValue] = useState([]); // Initialize with an empty array for multiple selections
-    const handleChange = (event, newValue) => {
+    const [value, setValue] = useState([]);
+
+    const handleChange = (event, newValue, label) => {
         setValue(newValue);
     };
 
@@ -18,12 +19,10 @@ const MultiSelect = ({ dropdownOptions, label }) => {
                 getOptionLabel={(option) => option}
                 value={value}
                 onChange={handleChange}
-                defaultValue={[dropdownOptions[0]]}
                 filterSelectedOptions
                 renderInput={(params) => (
                     <TextField
                         {...params}
-                        label={label}
                         placeholder={label}
                     />
                 )}
