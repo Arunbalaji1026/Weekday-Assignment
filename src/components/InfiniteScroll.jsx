@@ -23,7 +23,6 @@ const InfiniteScroll = ({ loadMore, hasMore, loading }) => {
 
     return (
         <div ref={observerTargetRef}>
-            {loading && <div>Loading...</div>}
         </div>
     )
 }

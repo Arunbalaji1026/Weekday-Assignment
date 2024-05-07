@@ -1,9 +1,9 @@
-import { apiHeaders } from "./apiHeaders";
+import { apiHeaders } from "../utils/constants.js";
 
 export const getApiData = async (offset) => {
     const requestOptions = {
         method: 'POST',
-        headers: apiHeaders,
+        headers: apiHeaders(),
         body: JSON.stringify({
             limit: 10,
             offset
@@ -13,7 +13,7 @@ export const getApiData = async (offset) => {
         const response = await fetch(
             "https://api.weekday.technology/adhoc/getSampleJdJSON",
             requestOptions
-        );
+        )
 
         if (!response.ok) {
             throw new Error('Failed to fetch data');

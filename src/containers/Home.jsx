@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { Grid } from '@mui/material'
+import { CircularProgress, Grid, Box } from '@mui/material'
 import Card from "../components/Card";
 import { getApiData } from "../utils/api";
 import InfiniteScroll from "../components/InfiniteScroll";
+import Filter from "../components/Filter";
 
 
 const Home = () => {
@@ -16,9 +17,9 @@ const Home = () => {
         setLoading(true);
         const result = await getApiData(offset);
         if (result) {
-            setJobListings(prevData => offset !== 0 ? [...prevData, ...result.jdList] : result.jdList);
-            setOffset(prevOffset => prevOffset + result.jdList.length);
-            setHasMore(result.jdList.length > 0);
+            setJobListings(prevData => offset !== 0 ? [...prevData, ...result?.jdList] : result?.jdList);
+            setOffset(prevOffset => prevOffset + result?.jdList?.length);
+            setHasMore(result?.jdList?.length > 0);
         } else {
             setHasMore(false);
         }
@@ -31,12 +32,16 @@ const Home = () => {
 
     return (
         <>
-            <Grid container spacing={3}>
+            <Box sx={{marginBottom: 10}}>
+                <Filter />
+            </Box>
+            <Grid container spacing={3} justifyContent="flex-start">
                 {jobListings && jobListings?.length > 0 && jobListings?.map((jobDetails, index) =>
                     <Grid item lg={4} md={6} xs={12}>
                         <Card key={index} jobData={jobDetails} />
                     </Grid>
                 )}
+                {loading && <div className="circular-loader">{<CircularProgress />}</div>}
             </Grid>
             <InfiniteScroll
                 loadMore={loadData}

@@ -118,3 +118,13 @@ h2 {
   color: white;
   background-color: blue;
 }
+
+.circular-loader {
+  z-index: 99999px;
+}
+
+.filter-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
