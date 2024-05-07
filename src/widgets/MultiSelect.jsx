@@ -1,11 +1,14 @@
 import { TextField, Autocomplete, Paper } from "@mui/material";
-import React, { useState } from "react";
+import React, { useState, useReducer } from "react";
+import { multiSelectReducer } from "../reducers/filterReducers";
 
-const MultiSelect = ({ dropdownOptions, label }) => {
+const MultiSelect = ({ dropdownOptions, label, filterName, dispatch }) => {
     const [value, setValue] = useState([]);
+    const [state, setState] = useReducer(multiSelectReducer, {});
 
-    const handleChange = (event, newValue, label) => {
+    const handleChange = (event, newValue) => {
         setValue(newValue);
+        dispatch({ type: 'SELECT_OPTION', filterName, selectedValues: newValue });
     };
 
     return (
