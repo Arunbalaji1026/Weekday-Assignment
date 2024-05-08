@@ -5,7 +5,7 @@ export const apiHeaders = () => {
 }
 
 export const filterOptions = [
-    { filterName: 'jobRole', name: "Roles", values: ['Frontend', 'Backend', 'React native', 'Ios', 'Android', 'Team Lead'] },
+    { filterName: 'jobRole', name: "Roles", values: ['Frontend', 'Backend', 'React native', 'Ios', 'Android', 'Tech Lead'] },
     { filterName: 'employeeNums', name: "Number of Employees", values: ['1-10', '11-20', '21-50', '51-100', '101-200', '201-500', '500+'] },
     { filterName: 'minExp', name: "Experience", values: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] },
     { filterName: 'workMode', name: "Remote", values: ['Remote', 'Hybrid', 'In-office'] },

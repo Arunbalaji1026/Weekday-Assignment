@@ -31,20 +31,20 @@ function getMinSalaryAmount(minSalaryLpa) {
 }
 
 export const filterByCriteria = (filterBy, listings) => {
-    const minJdSalary = getMinSalaryAmount(filterBy.minJdSalary)
+    const minJdSalary = getMinSalaryAmount(filterBy?.minJdSalary)
     return listings.filter(listing => {
         // Convert both the jobRole in the listing and the roles in the filter to lowercase for case-insensitive comparison
-        let roleMatch = filterBy.jobRole ? filterBy.jobRole.map(role => role.toLowerCase()).includes(listing.jobRole.toLowerCase()) : true;
+        let roleMatch = filterBy?.jobRole ? filterBy?.jobRole.map(role => role?.toLowerCase()).includes(listing?.jobRole?.toLowerCase()) : true;
 
         // Location filtering
-        let locationMatch = filterBy.location ? filterBy.location.map(loc => loc.toLowerCase()).includes(listing.location.toLowerCase()) : true;
+        let locationMatch = filterBy?.location ? filterBy?.location.map(loc => loc?.toLowerCase()).includes(listing?.location?.toLowerCase()) : true;
 
         // Experience filtering (Example: Filtering by minimum experience)
-        let experienceMatch = filterBy.minExp !== undefined ? listing.minExp >= filterBy.minExp : true;
+        let experienceMatch = filterBy?.minExp !== undefined ? listing?.minExp <= filterBy?.minExp : true;
 
-        let minJdSalaryMatch = filterBy.minJdSalary !== undefined ? listing.minJdSalary >= minJdSalary : true;
+        let minJdSalaryMatch = filterBy?.minJdSalary !== undefined ? listing?.minJdSalary >= minJdSalary : true;
 
-        let companyNameMatch = filterBy.CompanyName !== '' ? filterBy?.CompanyName.toLowerCase().includes(listing.companyName.toLowerCase()) : true;
+        let companyNameMatch = filterBy?.CompanyName !== undefined && filterBy?.CompanyName !== '' ? filterBy?.CompanyName?.toLowerCase().includes(listing?.companyName?.toLowerCase()) : true;
 
         // Return true if all conditions match
         return roleMatch && locationMatch && experienceMatch && minJdSalaryMatch && companyNameMatch;

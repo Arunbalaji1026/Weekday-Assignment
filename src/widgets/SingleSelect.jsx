@@ -10,7 +10,7 @@ const SingleSelect = ({ dropdownOptions, label, filterName, dispatch }) => {
         setSelectedVal(value);
         dispatch({ type: 'SELECT_OPTION', filterName, selectedValues: value });
     }
-    console.log(selectedVal, 'selectedVal');
+    
     return (
         <div>
             <Autocomplete

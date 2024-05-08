@@ -7,7 +7,6 @@ import Filter from "../components/Filter";
 import { multiSelectReducer } from "../reducers/filterReducers";
 import { filterByCriteria } from "../utils/utilCommonFunc";
 
-
 const Home = () => {
     const [jobListings, setJobListings] = useState([]);
     const [filteredJobListings, setFilteredJobListings] = useState([]);
@@ -49,9 +48,9 @@ const Home = () => {
             <Box sx={{ marginBottom: '30px' }}>
                 <Filter dispatch={dispatch} />
             </Box>
-            <Grid container spacing={3} justifyContent="flex-start">
+            <Grid container spacing={3} justifyContent="space-between">
                 {(filteredJobListings.length > 0 ? filteredJobListings : jobListings)?.map((jobDetails, index) =>
-                    <Grid item lg={4} md={6} xs={12}>
+                    <Grid item lg={4} md={6} xs={12} justifyContent="center">
                         <Card key={index} jobData={jobDetails} />
                     </Grid>
                 )}
